@@ -19,7 +19,7 @@ BOOL WINAPI Hook_ReadFile(
 ) {
     static std::atomic<uint64_t> readCount = 0;
     readCount += nNumberOfBytesToRead;
-    if (sleepThreshold <= 1 || readCount >= sleepThreshold) {
+    if (readCount >= sleepThreshold) {
         readCount = 0;
         Sleep(sleepDuration);
     }
@@ -28,13 +28,14 @@ BOOL WINAPI Hook_ReadFile(
 
 
 void loadConfig() {
+
     std::ifstream f("ssdlimiter.cfg");
     if (f.good()) {
         
         for (std::string line; std::getline(f, line); ) {
             if (line.starts_with("wait_threshold=")) {
                 try {
-                    sleepThreshold = std::stoull(line.substr(16));
+                    sleepThreshold = std::stoull(line.substr(15));
                 }
                 catch (std::exception&) { }
             }

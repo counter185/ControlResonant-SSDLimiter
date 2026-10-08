@@ -3,6 +3,6 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="ControlResonant-SSDLimiter/ControlResonant-SSDLimiter.vcxproj" />
-  <Project Path="detours/detours.vcxproj" />
+  <Project Path="ControlResonant-SSDLimiter/ControlResonant-SSDLimiter.vcxproj" Id="fdff22e7-0329-4839-b024-df0ee898698a" />
+  <Project Path="detours/detours.vcxproj" Id="cde7bd84-361d-4d5a-9a7e-50f54176529e" />
 </Solution>

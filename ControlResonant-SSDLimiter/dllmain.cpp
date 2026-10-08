@@ -6,9 +6,13 @@
 
 void* Real_DwmSetWindowAttribute = NULL;
 
+bool hooked = false;
 void LoadHooks() {
-    Real_DwmSetWindowAttribute = GetProcAddress(LoadLibraryW(L"C:\\Windows\\System32\\dwmapi.dll"), "DwmSetWindowAttribute");
-    hook();
+    if (!hooked) {
+        Real_DwmSetWindowAttribute = GetProcAddress(LoadLibraryW(L"C:\\Windows\\System32\\dwmapi.dll"), "DwmSetWindowAttribute");
+        hook();
+        hooked = true;
+    }
     //FILE* f = NULL;
     //fopen_s(&f, "out.txt", "w");
     //fwrite("--cr-ssdlimiter loaded", 1, 22, f);
